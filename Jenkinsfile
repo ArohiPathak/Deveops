@@ -6,19 +6,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat '"C:\\Users\\fe\\AppData\\Local\\Python\\bin\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Build') {
             steps {
-                bat 'python app.py'
+                bat '"C:\\Users\\fe\\AppData\\Local\\Python\\bin\\python.exe" app.py'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'pytest --junitxml=test-results.xml'
+                bat '"C:\\Users\\fe\\AppData\\Local\\Python\\bin\\python.exe" -m pytest --junitxml=test-results.xml'
             }
         }
     }
