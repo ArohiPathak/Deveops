@@ -4,12 +4,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/ArohiPathak/Deveops.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 bat 'pip install -r requirements.txt'
@@ -24,14 +18,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'pytest'
+                bat 'pytest --junitxml=test-results.xml'
             }
         }
     }
 
     post {
         always {
-            junit '**/test-results.xml'
+            junit 'test-results.xml'
         }
     }
 }
